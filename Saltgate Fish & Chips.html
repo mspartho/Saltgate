@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Saltgate Fish &amp; Chips</title>
+<meta name="description" content="Day-boat haddock, cod and plaice in ale batter, with hand-cut chips fried twice. Order for collection or eat in by the harbour.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F5F7F5;
+  --ink:#10262C;
+  --muted:#4A5F66;
+  --panel:#FFFFFF;
+  --line:#D3DDDA;
+  --accent-text:#8A4A12;
+  --focus:#0A6C80;
+  --sel:#FFF3D6;
+  --gold:#E2A233;
+  --gold-hover:#EDB446;
+  --on-gold:#10262C;
+  --harbour:#0E2A31;
+  --harbour-2:#173F49;
+  --hero-ink:#F3F6F2;
+  --hero-muted:#B4C9C4;
+  --good:#2F7D4F;
+  --low:#B5651D;
+  --display:'Gloock','Iowan Old Style','Palatino Linotype',Georgia,serif;
+  --body:'Instrument Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0B1F24;
+    --ink:#EAF1EE;
+    --muted:#A3B9B4;
+    --panel:#12303A;
+    --line:#254852;
+    --accent-text:#EDB854;
+    --focus:#F0C060;
+    --sel:rgba(226,162,51,.16);
+    --good:#6FCB94;
+    --low:#EDA45A;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0B1F24;
+  --ink:#EAF1EE;
+  --muted:#A3B9B4;
+  --panel:#12303A;
+  --line:#254852;
+  --accent-text:#EDB854;
+  --focus:#F0C060;
+  --sel:rgba(226,162,51,.16);
+  --good:#6FCB94;
+  --low:#EDA45A;
+}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 72px);-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+*,*::before,*::after{box-sizing:inherit}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:var(--body);font-size:1.0625rem;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img,svg{max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:4px}
+.site-header :focus-visible,.hero :focus-visible,.site-footer :focus-visible{outline-color:var(--gold)}
+.skip{position:absolute;left:-999px;top:8px;background:var(--gold);color:var(--on-gold);padding:10px 16px;border-radius:8px;z-index:100;font-weight:600}
+.skip:focus{left:12px}
+
+.wrap{max-width:1160px;margin:0 auto;padding-left:clamp(20px,4vw,40px);padding-right:clamp(20px,4vw,40px)}
+.band{padding-top:clamp(64px,9vw,120px);padding-bottom:clamp(64px,9vw,120px)}
+.band-tight{padding-top:clamp(48px,6vw,80px);padding-bottom:clamp(48px,6vw,80px)}
+
+h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;letter-spacing:-.01em}
+h2{font-size:clamp(2rem,4.2vw,3.25rem);line-height:1.08}
+h3{font-size:1.5rem;line-height:1.2}
+.lead{color:var(--muted);max-width:56ch;margin:16px 0 0;font-size:1.125rem}
+
+/* Header */
+.site-header{
+  position:sticky;top:env(safe-area-inset-top,0px);z-index:50;
+  background:var(--harbour);color:var(--hero-ink);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:68px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand-mark{width:34px;height:34px;flex:none}
+.brand-name{font-family:var(--display);font-size:1.5rem;line-height:1}
+.brand-sub{display:block;font-size:.8rem;color:var(--hero-muted);letter-spacing:.02em;margin-top:3px;font-family:var(--body)}
+.nav{display:flex;align-items:center;gap:clamp(16px,3vw,34px)}
+.nav a{text-decoration:none;font-weight:500;font-size:.98rem;color:var(--hero-ink);opacity:.86}
+.nav a:hover{opacity:1;text-decoration:underline;text-underline-offset:6px}
+.nav a.btn{opacity:1}
+.nav a.btn:hover{text-decoration:none}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:.8em 1.5em;border-radius:999px;border:2px solid transparent;
+  font:600 1rem/1 var(--body);text-decoration:none;cursor:pointer;
+  transition:background-color .15s ease,border-color .15s ease,transform .15s ease;
+}
+.btn-gold{background:var(--gold);color:var(--on-gold)}
+.btn-gold:hover{background:var(--gold-hover)}
+.btn-line{background:transparent;color:var(--hero-ink);border-color:rgba(243,246,242,.45)}
+.btn-line:hover{border-color:var(--hero-ink)}
+.btn-ink{background:var(--ink);color:var(--bg)}
+.btn-ink:hover{opacity:.9}
+.btn-outline{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn-outline:hover{background:var(--ink);color:var(--bg)}
+.btn:active{transform:translateY(1px)}
+
+/* Hero */
+.hero{background:var(--harbour);color:var(--hero-ink);overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,5vw,72px);align-items:center;padding-top:clamp(40px,7vw,96px);padding-bottom:clamp(48px,7vw,104px)}
+.hero h1{font-size:clamp(2.6rem,6.2vw,5.4rem);line-height:1.02;max-width:12ch}
+.hero-copy p{color:var(--hero-muted);font-size:1.2rem;max-width:44ch;margin:24px 0 0}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+.status{
+  display:inline-flex;align-items:center;gap:10px;margin-bottom:26px;
+  padding:8px 16px 8px 14px;border-radius:999px;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);
+  font-size:.95rem;font-weight:500;
+}
+.status-dot{width:10px;height:10px;border-radius:50%;background:#7A8C90;flex:none}
+.status[data-open="true"] .status-dot{background:#6FCB94;box-shadow:0 0 0 4px rgba(111,203,148,.2)}
+.hero-plate{justify-self:center;width:100%;max-width:520px}
+.hero-plate svg{display:block;width:100%;height:auto}
+@media (prefers-reduced-motion:no-preference){
+  .hero-plate svg{animation:settle 1s cubic-bezier(.2,.8,.2,1) both}
+  @keyframes settle{
+    from{opacity:0;transform:translateY(-36px) rotate(-7deg)}
+    to{opacity:1;transform:none}
+  }
+}
+
+/* Board */
+.board-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:16px 40px}
+.table-scroll{overflow-x:auto;margin-top:36px;border-top:2px solid var(--ink)}
+table{width:100%;border-collapse:collapse;min-width:520px}
+th,td{text-align:left;padding:18px 16px 18px 0;border-bottom:1px solid var(--line);vertical-align:baseline}
+th{font-weight:600;font-size:.95rem;color:var(--muted);padding-top:14px;padding-bottom:14px}
+td.fish-name{font-family:var(--display);font-size:1.5rem;line-height:1.2}
+td.num,th.num{text-align:right;padding-right:0}
+.tag{display:inline-flex;align-items:center;gap:8px;font-weight:500}
+.tag::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--good)}
+.tag.low::before{background:var(--low)}
+
+/* Builder */
+.build{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.build-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(28px,5vw,72px);margin-top:44px;align-items:start}
+fieldset{border:0;margin:0 0 34px;padding:0;min-width:0}
+legend{font-family:var(--display);font-size:1.4rem;padding:0;margin-bottom:14px}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.opt-wrap{position:relative;display:block}
+.opt-wrap input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer}
+.opt{
+  display:block;height:100%;padding:14px 16px;border-radius:14px;
+  border:2px solid var(--line);background:var(--bg);
+  transition:border-color .15s ease,background-color .15s ease;
+}
+.opt strong{display:block;font-weight:600}
+.opt small{display:block;color:var(--muted);font-size:.9rem;line-height:1.4;margin-top:2px}
+.opt .add{display:block;margin-top:8px;font-weight:600;font-size:.95rem}
+.opt-wrap input:hover + .opt{border-color:var(--muted)}
+.opt-wrap input:checked + .opt{border-color:var(--gold);background:var(--sel);box-shadow:inset 0 0 0 1px var(--gold)}
+.opt-wrap input:focus-visible + .opt{outline:3px solid var(--focus);outline-offset:3px}
+
+.build-side{position:sticky;top:calc(env(safe-area-inset-top,0px) + 88px)}
+.build-plate{background:var(--harbour);border-radius:28px;padding:clamp(16px,3vw,28px)}
+.build-plate svg{display:block;width:100%;height:auto;max-width:420px;margin:0 auto}
+.summary{margin-top:20px;padding:22px 24px;border-radius:18px;border:2px solid var(--ink)}
+.summary ul{list-style:none;margin:0;padding:0}
+.summary li{display:flex;justify-content:space-between;gap:16px;padding:6px 0;border-bottom:1px dotted var(--line)}
+.summary li span:last-child{color:var(--muted);white-space:nowrap}
+.total{display:flex;justify-content:space-between;align-items:baseline;margin-top:14px;font-family:var(--display);font-size:1.9rem}
+.summary-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+.fine{color:var(--muted);font-size:.9rem;margin:14px 0 0}
+
+/* Menu */
+.menu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:56px clamp(32px,6vw,88px);margin-top:48px}
+.menu-block h3{padding-bottom:12px;border-bottom:2px solid var(--ink);margin-bottom:8px}
+.items{list-style:none;margin:0;padding:0}
+.items li{padding:14px 0 6px}
+.row{display:flex;align-items:baseline;gap:10px}
+.row .name{font-weight:600}
+.row .lead-dots{flex:1;border-bottom:2px dotted var(--line);transform:translateY(-4px);min-width:16px}
+.row .price{font-variant-numeric:tabular-nums;font-weight:600}
+.desc{margin:2px 0 0;color:var(--muted);font-size:.98rem;max-width:44ch}
+.veg{color:var(--accent-text);font-weight:600;font-size:.9rem}
+.allergy{margin-top:48px;padding:20px 24px;border-radius:16px;background:var(--panel);border:1px solid var(--line);max-width:74ch}
+.allergy p{margin:0}
+
+/* How we cook */
+.how{background:var(--harbour);color:var(--hero-ink)}
+.how-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,96px);align-items:start}
+.how blockquote{margin:0;font-family:var(--display);font-size:clamp(2rem,4.4vw,3.5rem);line-height:1.1;letter-spacing:-.01em}
+.how-list{display:grid;gap:0}
+.how-item{padding:26px 0;border-top:1px solid rgba(255,255,255,.18)}
+.how-item:last-child{border-bottom:1px solid rgba(255,255,255,.18)}
+.how-item h3{margin-bottom:8px;color:var(--gold)}
+.how-item p{margin:0;color:var(--hero-muted);max-width:50ch}
+
+/* Visit */
+.visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,96px);margin-top:44px}
+address{font-style:normal;font-size:1.25rem;line-height:1.5}
+.contact{margin-top:22px;display:grid;gap:4px}
+.contact a{font-weight:600;text-underline-offset:4px}
+.hours{width:100%;min-width:0}
+.hours th,.hours td{padding:13px 0;font-size:1.05rem;color:var(--ink);font-weight:400}
+.hours th{font-weight:500}
+.hours td{text-align:right;font-variant-numeric:tabular-nums}
+.hours tr.today th,.hours tr.today td{font-weight:700}
+.hours tr.today th::after{content:" (today)";font-weight:500;color:var(--accent-text)}
+.hours-scroll{border-top:2px solid var(--ink)}
+
+/* Footer */
+.site-footer{background:var(--harbour);color:var(--hero-muted);padding-top:36px;padding-bottom:36px;font-size:.95rem}
+.footer-inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 32px}
+.footer-inner span:first-child{font-family:var(--display);font-size:1.25rem;color:var(--hero-ink)}
+
+/* Responsive */
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr}
+  .hero h1{max-width:14ch}
+  .hero-plate{max-width:420px;justify-self:start}
+  .build-grid,.how-grid,.visit-grid{grid-template-columns:1fr}
+  .build-side{position:static}
+  .menu-grid{grid-template-columns:1fr}
+}
+@media (max-width:720px){
+  .nav a:not(.btn){display:none}
+}
+@media (max-width:480px){
+  .brand-sub{display:none}
+  .hero-actions .btn{flex:1 1 100%}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#menu">Skip to the menu</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="#top" aria-label="Saltgate Fish and Chips, back to top">
+      <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+        <circle cx="20" cy="20" r="20" fill="#E2A233"/>
+        <path d="M8 20c5-7 13-9 20-4l5-4v16l-5-4c-7 5-15 3-20-4z" fill="#0E2A31"/>
+        <circle cx="14" cy="18.5" r="1.6" fill="#E2A233"/>
+      </svg>
+      <span><span class="brand-name">Saltgate</span><span class="brand-sub">Fish &amp; Chips</span></span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#menu">Menu</a>
+      <a href="#how">How we cook</a>
+      <a href="#visit">Visit</a>
+      <a class="btn btn-gold" href="#build">Build your plate</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <div class="status" id="status" data-open="false" role="status">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span id="status-text">Checking opening hours</span>
+        </div>
+        <h1 id="hero-title">The fish came in this morning. Your plate is next.</h1>
+        <p>Day-boat haddock, cod and plaice in a light ale batter, with chips cut by hand and fried twice. Collect it hot, or sit down with us by the harbour.</p>
+        <div class="hero-actions">
+          <a class="btn btn-gold" href="#build">Build your plate</a>
+          <a class="btn btn-line" href="#menu">See the menu</a>
+        </div>
+      </div>
+      <div class="hero-plate" id="hero-plate"></div>
+    </div>
+  </section>
+
+  <section class="band-tight wrap" id="board" aria-labelledby="board-title">
+    <div class="board-head">
+      <div>
+        <h2 id="board-title">On the board today</h2>
+        <p class="lead">We update this each morning. When a fish is gone, it is gone.</p>
+      </div>
+    </div>
+    <div class="table-scroll" tabindex="0" role="region" aria-label="Today's fish, scrollable">
+      <table>
+        <thead>
+          <tr><th scope="col">Fish</th><th scope="col">Where it comes from</th><th scope="col">Today</th><th scope="col" class="num">Plate</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="fish-name">Haddock</td><td>Day boats, North Sea</td><td><span class="tag">Plenty</span></td><td class="num">£13.50</td></tr>
+          <tr><td class="fish-name">Cod</td><td>Line-caught, Icelandic waters</td><td><span class="tag">Plenty</span></td><td class="num">£14.50</td></tr>
+          <tr><td class="fish-name">Plaice</td><td>Day boats, English Channel</td><td><span class="tag low">Running low</span></td><td class="num">£15.50</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="build band" id="build" aria-labelledby="build-title">
+    <div class="wrap">
+      <h2 id="build-title">Build your plate</h2>
+      <p class="lead">Choose what you like and watch it land on the plate. Send us the order and we will have it hot when you arrive.</p>
+
+      <div class="build-grid">
+        <form id="builder" onsubmit="return false" aria-label="Plate builder">
+          <fieldset>
+            <legend>Fish</legend>
+            <div class="opts">
+              <label class="opt-wrap"><input type="radio" name="fish" value="haddock" checked><span class="opt"><strong>Haddock</strong><small>Sweet, flaky, the northern favourite</small><span class="add">£13.50</span></span></label>
+              <label class="opt-wrap"><input type="radio" name="fish" value="cod"><span class="opt"><strong>Cod</strong><small>Big, white flakes and a clean taste</small><span class="add">£14.50</span></span></label>
+              <label class="opt-wrap"><input type="radio" name="fish" value="plaice"><span class="opt"><strong>Plaice</strong><small>Delicate and light, thinner fillet</small><span class="add">£15.50</span></span></label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Batter</legend>
+            <div class="opts">
+              <label class="opt-wrap"><input type="radio" name="batter" value="ale" checked><span class="opt"><strong>Ale batter</strong><small>Light, crisp and golden</small><span class="add">Included</span></span></label>
+              <label class="opt-wrap"><input type="radio" name="batter" value="gf"><span class="opt"><strong>Gluten-free</strong><small>Fried in its own fryer</small><span class="add">+£1.00</span></span></label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Chips</legend>
+            <div class="opts">
+              <label class="opt-wrap"><input type="radio" name="chips" value="regular" checked><span class="opt"><strong>Regular</strong><small>A proper portion</small><span class="add">Included</span></span></label>
+              <label class="opt-wrap"><input type="radio" name="chips" value="large"><span class="opt"><strong>Large</strong><small>For sharing, or not</small><span class="add">+£1.50</span></span></label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>On the side</legend>
+            <div class="opts">
+              <label class="opt-wrap"><input type="checkbox" name="extra" value="peas"><span class="opt"><strong>Mushy peas</strong><small>Slow-cooked with mint</small><span class="add">+£2.50</span></span></label>
+              <label class="opt-wrap"><input type="checkbox" name="extra" value="tartare"><span class="opt"><strong>Tartare sauce</strong><small>Made here, with capers</small><span class="add">+£1.50</span></span></label>
+              <label class="opt-wrap"><input type="checkbox" name="extra" value="curry"><span class="opt"><strong>Curry sauce</strong><small>Mild and a little sweet</small><span class="add">+£1.80</span></span></label>
+              <label class="opt-wrap"><input type="checkbox" name="extra" value="egg"><span class="opt"><strong>Pickled egg</strong><small>Sharp, in malt vinegar</small><span class="add">+£1.50</span></span></label>
+            </div>
+          </fieldset>
+        </form>
+
+        <aside class="build-side" aria-label="Your plate">
+          <div class="build-plate" id="build-plate"></div>
+          <div class="summary" aria-live="polite">
+            <ul id="lines"></ul>
+            <div class="total"><span>Total</span><span id="total">£0.00</span></div>
+            <div class="summary-actions">
+              <a class="btn btn-ink" id="mailto" href="#">Send order by email</a>
+              <a class="btn btn-outline" href="tel:01632960123">Call 01632 960 123</a>
+            </div>
+            <p class="fine">Orders are for collection. We will confirm your time when we reply.</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="band wrap" id="menu" aria-labelledby="menu-title">
+    <h2 id="menu-title">The menu</h2>
+    <p class="lead">Everything is cooked to order, so a busy Friday may mean a short wait. It is worth it.</p>
+
+    <div class="menu-grid">
+      <div class="menu-block">
+        <h3>Fish and chips</h3>
+        <ul class="items">
+          <li><div class="row"><span class="name">Haddock</span><span class="lead-dots"></span><span class="price">£13.50</span></div><p class="desc">Ale-battered fillet with a regular portion of chips.</p></li>
+          <li><div class="row"><span class="name">Cod</span><span class="lead-dots"></span><span class="price">£14.50</span></div><p class="desc">A thick, line-caught fillet in ale batter, with chips.</p></li>
+          <li><div class="row"><span class="name">Plaice</span><span class="lead-dots"></span><span class="price">£15.50</span></div><p class="desc">Whole fillet, lightly battered, with chips.</p></li>
+          <li><div class="row"><span class="name">Whole-tail scampi</span><span class="lead-dots"></span><span class="price">£12.50</span></div><p class="desc">Langoustine tails in breadcrumb, with chips and tartare.</p></li>
+          <li><div class="row"><span class="name">Battered halloumi</span><span class="lead-dots"></span><span class="price">£11.50</span></div><p class="desc"><span class="veg">Vegetarian.</span> Thick slices in ale batter, with chips and mushy peas.</p></li>
+        </ul>
+      </div>
+
+      <div class="menu-block">
+        <h3>Sides and sauces</h3>
+        <ul class="items">
+          <li><div class="row"><span class="name">Chips, regular</span><span class="lead-dots"></span><span class="price">£4.00</span></div></li>
+          <li><div class="row"><span class="name">Chips, large</span><span class="lead-dots"></span><span class="price">£5.50</span></div></li>
+          <li><div class="row"><span class="name">Mushy peas</span><span class="lead-dots"></span><span class="price">£2.50</span></div></li>
+          <li><div class="row"><span class="name">Curry sauce</span><span class="lead-dots"></span><span class="price">£1.80</span></div></li>
+          <li><div class="row"><span class="name">Tartare sauce</span><span class="lead-dots"></span><span class="price">£1.50</span></div></li>
+          <li><div class="row"><span class="name">Pickled egg</span><span class="lead-dots"></span><span class="price">£1.50</span></div></li>
+          <li><div class="row"><span class="name">Bread and butter</span><span class="lead-dots"></span><span class="price">£1.50</span></div></li>
+        </ul>
+      </div>
+
+      <div class="menu-block">
+        <h3>Little ones</h3>
+        <ul class="items">
+          <li><div class="row"><span class="name">Small fish and chips</span><span class="lead-dots"></span><span class="price">£7.50</span></div><p class="desc">A half-size fillet of haddock with a small portion of chips.</p></li>
+          <li><div class="row"><span class="name">Haddock fingers</span><span class="lead-dots"></span><span class="price">£7.00</span></div><p class="desc">Real fish in crisp breadcrumb, with chips and peas.</p></li>
+        </ul>
+      </div>
+
+      <div class="menu-block">
+        <h3>To finish, and to drink</h3>
+        <ul class="items">
+          <li><div class="row"><span class="name">Sticky toffee pudding</span><span class="lead-dots"></span><span class="price">£6.50</span></div><p class="desc">With warm toffee sauce and vanilla ice cream.</p></li>
+          <li><div class="row"><span class="name">Apple crumble</span><span class="lead-dots"></span><span class="price">£6.00</span></div><p class="desc">With custard.</p></li>
+          <li><div class="row"><span class="name">Pot of tea</span><span class="lead-dots"></span><span class="price">£2.50</span></div></li>
+          <li><div class="row"><span class="name">Ginger beer</span><span class="lead-dots"></span><span class="price">£3.00</span></div></li>
+          <li><div class="row"><span class="name">Elderflower pressé</span><span class="lead-dots"></span><span class="price">£3.00</span></div></li>
+          <li><div class="row"><span class="name">Session ale, pint</span><span class="lead-dots"></span><span class="price">£5.50</span></div></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="allergy">
+      <p><strong>Allergies.</strong> Fish, gluten, egg and milk are in most of our dishes. Tell us about any allergy when you order and we will talk you through what is safe.</p>
+    </div>
+  </section>
+
+  <section class="how band" id="how" aria-labelledby="how-title">
+    <div class="wrap how-grid">
+      <div>
+        <h2 id="how-title" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">How we cook</h2>
+        <blockquote>We fry to order. If you can hear the fryer, your plate is being made.</blockquote>
+      </div>
+      <div class="how-list">
+        <div class="how-item">
+          <h3>The fish</h3>
+          <p>We buy from day boats and fillet each morning in the kitchen. What is not on the board by close is gone, so the last plates of the night might be plaice instead of cod.</p>
+        </div>
+        <div class="how-item">
+          <h3>The chips</h3>
+          <p>Maris Piper potatoes, cut by hand, blanched, rested and fried a second time. Fluffy in the middle and crisp enough to hear.</p>
+        </div>
+        <div class="how-item">
+          <h3>The fryer</h3>
+          <p>Rapeseed oil, filtered every day and changed twice a week. Ask for beef dripping and we will fry yours in that instead.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band wrap" id="visit" aria-labelledby="visit-title">
+    <h2 id="visit-title">Come and find us</h2>
+    <div class="visit-grid">
+      <div>
+        <address>
+          Saltgate Fish &amp; Chips<br>
+          14 Quay Street<br>
+          Harbourside
+        </address>
+        <div class="contact">
+          <a href="tel:01632960123">01632 960 123</a>
+          <a href="mailto:orders@saltgate.example">orders@saltgate.example</a>
+        </div>
+        <p class="lead" style="margin-top:28px">Eat in at the counter and window benches, or take it away and eat on the quay. Dogs are welcome outside.</p>
+      </div>
+      <div class="hours-scroll">
+        <table class="hours" id="hours" aria-label="Opening hours"></table>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <span>Saltgate</span>
+    <span>Fried to order, six days a week.</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  /* ---------- Plate illustration ---------- */
+  function rng(seed) {
+    return function () {
+      seed |= 0; seed = seed + 0x6D2B79F5 | 0;
+      var t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+  }
+
+  function pot(x, y, fill, extra) {
+    return '<g>' +
+      '<ellipse cx="' + x + '" cy="' + (y + 4) + '" rx="26" ry="24" fill="rgba(0,0,0,.12)"/>' +
+      '<circle cx="' + x + '" cy="' + y + '" r="25" fill="#E9EEEC" stroke="#C9D4D1" stroke-width="2"/>' +
+      '<circle cx="' + x + '" cy="' + y + '" r="18.5" fill="' + fill + '"/>' + (extra || '') +
+      '</g>';
+  }
+
+  function plateSVG(id, c, label) {
+    var scale = { haddock: 1, cod: 1.1, plaice: 0.96 }[c.fish] || 1;
+    var gf = c.batter === 'gf';
+    var a = gf ? '#F3D896' : '#F0BA4E';
+    var b = gf ? '#D8B060' : '#C57F1E';
+    var n = c.chips === 'large' ? 24 : 15;
+    var r = rng(7), i;
+
+    var chips = '';
+    var cols = ['#F0C863', '#E5AD3F', '#F6D57F'];
+    for (i = 0; i < n; i++) {
+      var x = 168 + (r() - 0.5) * 150;
+      var y = 304 + (r() - 0.5) * 50;
+      var rot = (r() - 0.5) * 110 + (i % 2 ? 20 : -20);
+      chips += '<rect x="' + (x - 30) + '" y="' + (y - 6) + '" width="60" height="12" rx="3.5" fill="' + cols[i % 3] +
+        '" stroke="#B9791E" stroke-opacity=".5" transform="rotate(' + rot.toFixed(1) + ' ' + x.toFixed(1) + ' ' + y.toFixed(1) + ')"/>';
+    }
+
+    var peas = '';
+    if (c.peas) {
+      peas = '<g transform="translate(104 118)">' +
+        '<path d="M-38 4C-40-22-14-38 14-34C40-30 46-6 38 14C28 38-6 42-26 30C-34 24-38 14-38 4Z" fill="#7A9B4A"/>' +
+        '<circle cx="-14" cy="-8" r="6" fill="#8EB05A"/><circle cx="10" cy="-14" r="7" fill="#6B8C3D"/>' +
+        '<circle cx="22" cy="6" r="6" fill="#8EB05A"/><circle cx="-4" cy="14" r="7" fill="#6B8C3D"/>' +
+        '<circle cx="-24" cy="12" r="5" fill="#8EB05A"/><circle cx="8" cy="24" r="5" fill="#8EB05A"/>' +
+        '<circle cx="-2" cy="-24" r="4" fill="#B5D07E" opacity=".7"/></g>';
+    }
+
+    var tartare = c.tartare
+      ? pot(286, 76, '#EFE7C6',
+          '<circle cx="279" cy="72" r="1.8" fill="#7C9A4B"/><circle cx="291" cy="70" r="1.8" fill="#7C9A4B"/>' +
+          '<circle cx="286" cy="82" r="1.8" fill="#7C9A4B"/><circle cx="277" cy="83" r="1.4" fill="#9BB56A"/>' +
+          '<circle cx="294" cy="80" r="1.4" fill="#9BB56A"/>')
+      : '';
+    var curry = c.curry
+      ? pot(338, 252, '#C98A2B',
+          '<path d="M326 246c6-6 16-6 22 0" stroke="#E4B057" stroke-width="3" fill="none" stroke-linecap="round"/>')
+      : '';
+    var egg = c.egg
+      ? '<g><ellipse cx="50" cy="176" rx="14" ry="18" fill="rgba(0,0,0,.12)" transform="translate(2 4)"/>' +
+        '<ellipse cx="50" cy="176" rx="14" ry="18" fill="#F5EEDA" stroke="#D9C79C" stroke-width="2"/>' +
+        '<ellipse cx="46" cy="170" rx="4" ry="6" fill="#fff" opacity=".55"/></g>'
+      : '';
+
+    var bubbles = '';
+    var bs = [[110,192,9],[150,160,7],[200,150,10],[255,150,8],[300,172,9],[285,212,10],[215,226,9],[150,230,8],[105,222,6],[240,190,12],[180,190,8],[320,150,5]];
+    for (i = 0; i < bs.length; i++) {
+      bubbles += '<circle cx="' + bs[i][0] + '" cy="' + bs[i][1] + '" r="' + bs[i][2] + '" fill="rgba(255,244,200,.38)"/>' +
+        '<circle cx="' + (bs[i][0] + 2) + '" cy="' + (bs[i][1] + 3) + '" r="' + (bs[i][2] * 0.55) + '" fill="rgba(140,70,8,.22)"/>';
+    }
+
+    var fishPath = 'M62 205C58 160 118 128 190 124C262 120 322 122 344 152C362 178 346 216 304 232C246 254 150 266 102 254C76 248 64 230 62 205Z';
+    var fishT = 'translate(-6 -2) translate(200 190) rotate(-10) scale(' + (scale * 0.92).toFixed(3) + ') translate(-200 -190)';
+
+    return '<svg viewBox="0 0 400 400" role="img" aria-label="' + label + '" xmlns="http://www.w3.org/2000/svg">' +
+      '<defs>' +
+        '<linearGradient id="' + id + '-f" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="' + a + '"/><stop offset="1" stop-color="' + b + '"/></linearGradient>' +
+        '<filter id="' + id + '-b" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="9"/></filter>' +
+      '</defs>' +
+      '<circle cx="200" cy="216" r="186" fill="rgba(0,0,0,.4)" filter="url(#' + id + '-b)"/>' +
+      '<circle cx="200" cy="200" r="186" fill="#FBFCFA"/>' +
+      '<circle cx="200" cy="200" r="152" fill="none" stroke="#DDE5E2" stroke-width="3"/>' +
+      '<circle cx="200" cy="200" r="136" fill="#F1F5F3"/>' +
+      peas + tartare + egg + curry +
+      '<g transform="' + fishT + '">' +
+        '<path d="' + fishPath + '" fill="rgba(0,0,0,.2)" transform="translate(4 9)"/>' +
+        '<path d="' + fishPath + '" fill="url(#' + id + '-f)" stroke="#9C5F12" stroke-opacity=".55" stroke-width="2"/>' +
+        bubbles +
+        '<path d="M92 176C120 150 180 138 240 136" stroke="rgba(255,248,215,.55)" stroke-width="5" fill="none" stroke-linecap="round"/>' +
+      '</g>' +
+      chips +
+      '<g transform="translate(302 322) rotate(22)">' +
+        '<path d="M-40 0A40 40 0 0 0 40 0Z" fill="#F2CE45" stroke="#D5AA1E" stroke-width="2"/>' +
+        '<path d="M-32 3A32 32 0 0 0 32 3Z" fill="#FBF1B8"/>' +
+        '<path d="M0 3V34M-20 3L-13 28M20 3L13 28" stroke="#F2CE45" stroke-width="2"/>' +
+      '</g>' +
+    '</svg>';
+  }
+
+  /* ---------- Hero plate ---------- */
+  document.getElementById('hero-plate').innerHTML =
+    plateSVG('hero', { fish: 'haddock', batter: 'ale', chips: 'regular', peas: true, tartare: true }, 'A plate of battered haddock, chips, mushy peas, tartare sauce and a lemon wedge');
+
+  /* ---------- Builder ---------- */
+  var FISH = { haddock: ['Haddock', 13.5], cod: ['Cod', 14.5], plaice: ['Plaice', 15.5] };
+  var EXTRA = { peas: ['Mushy peas', 2.5], tartare: ['Tartare sauce', 1.5], curry: ['Curry sauce', 1.8], egg: ['Pickled egg', 1.5] };
+  var form = document.getElementById('builder');
+  var lines = document.getElementById('lines');
+  var totalEl = document.getElementById('total');
+  var mail = document.getElementById('mailto');
+  var buildPlate = document.getElementById('build-plate');
+
+  function money(n) { return '£' + n.toFixed(2); }
+
+  function update() {
+    var fish = form.elements.fish.value;
+    var batter = form.elements.batter.value;
+    var chips = form.elements.chips.value;
+    var extras = Array.prototype.filter.call(form.elements.extra, function (e) { return e.checked; }).map(function (e) { return e.value; });
+
+    var rows = [];
+    var total = FISH[fish][1];
+    rows.push([FISH[fish][0] + ', ' + (batter === 'gf' ? 'gluten-free batter' : 'ale batter'), FISH[fish][1]]);
+    if (batter === 'gf') { total += 1; rows.push(['Gluten-free batter', 1]); }
+    rows.push([chips === 'large' ? 'Large chips' : 'Regular chips', chips === 'large' ? 1.5 : 0]);
+    if (chips === 'large') total += 1.5;
+    extras.forEach(function (k) { total += EXTRA[k][1]; rows.push([EXTRA[k][0], EXTRA[k][1]]); });
+
+    /* Batter surcharge is shown on its own line, so the fish line stays clean */
+    rows[0][0] = FISH[fish][0] + ', ' + (batter === 'gf' ? 'gluten-free batter' : 'ale batter');
+
+    lines.innerHTML = rows.map(function (r) {
+      return '<li><span>' + r[0] + '</span><span>' + (r[1] ? money(r[1]) : 'Included') + '</span></li>';
+    }).join('');
+    totalEl.textContent = money(total);
+
+    var desc = FISH[fish][0] + ' in ' + (batter === 'gf' ? 'gluten-free' : 'ale') + ' batter with ' + chips + ' chips' +
+      (extras.length ? ', plus ' + extras.map(function (k) { return EXTRA[k][0].toLowerCase(); }).join(', ') : '');
+    buildPlate.innerHTML = plateSVG('build', {
+      fish: fish, batter: batter, chips: chips,
+      peas: extras.indexOf('peas') > -1, tartare: extras.indexOf('tartare') > -1,
+      curry: extras.indexOf('curry') > -1, egg: extras.indexOf('egg') > -1
+    }, 'Your plate: ' + desc);
+
+    var body = 'Collection order\n\n' +
+      rows.map(function (r) { return '- ' + r[0] + (r[1] ? ' (' + money(r[1]) + ')' : ''); }).join('\n') +
+      '\n\nTotal: ' + money(total) + '\n\nName:\nPhone:\nCollect at:';
+    mail.href = 'mailto:orders@saltgate.example?subject=' + encodeURIComponent('Collection order') + '&body=' + encodeURIComponent(body);
+  }
+  form.addEventListener('change', update);
+  update();
+
+  /* ---------- Opening hours (Europe/London) ---------- */
+  var DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  var HOURS = [
+    [720, 1200],   /* Sun 12:00-20:00 */
+    null,          /* Mon closed */
+    [690, 1260],   /* Tue 11:30-21:00 */
+    [690, 1260],
+    [690, 1260],
+    [690, 1320],   /* Fri 11:30-22:00 */
+    [690, 1320]
+  ];
+  function hhmm(m) { return String(Math.floor(m / 60)).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0'); }
+  function short12(m) {
+    var h = Math.floor(m / 60), mm = m % 60, s = h >= 12 ? 'pm' : 'am';
+    h = h % 12 || 12;
+    return h + (mm ? ':' + String(mm).padStart(2, '0') : '') + s;
+  }
+  function londonNow() {
+    var day = 0, mins = 0;
+    try {
+      var parts = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/London', weekday: 'short', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).formatToParts(new Date());
+      var map = {};
+      parts.forEach(function (p) { map[p.type] = p.value; });
+      day = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(map.weekday);
+      mins = parseInt(map.hour, 10) * 60 + parseInt(map.minute, 10);
+    } catch (e) {
+      var d = new Date(); day = d.getDay(); mins = d.getHours() * 60 + d.getMinutes();
+    }
+    return { day: day < 0 ? 0 : day, mins: mins };
+  }
+  function renderHours() {
+    var now = londonNow();
+    var rows = '';
+    for (var k = 0; k < 7; k++) {
+      var d = (k + 1) % 7; /* start on Monday */
+      var h = HOURS[d];
+      rows += '<tr' + (d === now.day ? ' class="today"' : '') + '><th scope="row">' + DAYS[d] + '</th><td>' +
+        (h ? hhmm(h[0]) + ' to ' + hhmm(h[1]) : 'Closed') + '</td></tr>';
+    }
+    document.getElementById('hours').innerHTML = rows;
+
+    var today = HOURS[now.day];
+    var status = document.getElementById('status');
+    var text = document.getElementById('status-text');
+    if (today && now.mins >= today[0] && now.mins < today[1]) {
+      status.setAttribute('data-open', 'true');
+      text.textContent = 'Open now, frying until ' + short12(today[1]);
+      return;
+    }
+    status.setAttribute('data-open', 'false');
+    if (today && now.mins < today[0]) {
+      text.textContent = 'Closed, opening today at ' + short12(today[0]);
+      return;
+    }
+    for (var j = 1; j <= 7; j++) {
+      var nd = (now.day + j) % 7;
+      if (HOURS[nd]) {
+        text.textContent = 'Closed, opening ' + (j === 1 ? 'tomorrow' : DAYS[nd]) + ' at ' + short12(HOURS[nd][0]);
+        return;
+      }
+    }
+  }
+  renderHours();
+})();
+</script>
+</body>
+</html>
